@@ -1,49 +1,3 @@
-
-// load sample file from link
-// url = "none";
-// var files = fetch(url)
-//   .then(res => res.blob()) // Gets the response and returns it as a blob
-//   .then(blob => {
-//     // Here's where you get access to the blob
-//     // And you can use it for whatever you want
-//     // Like calling ref().put(blob)
-
-//     // Here, I use it to make an image appear on the page
-//     let objectURL = URL.createObjectURL(blob);
-//     let myImage = new Image();
-//     myImage.src = objectURL;
-//     document.getElementById('myImg').appendChild(myImage)
-//   });
-
-// let loading_ele = $('#loading');
-// loading_ele.css('display', 'block');
-// setTimeout(function () {
-//   loading_ele.css('opacity', '1');
-// }, 10);
-
-// console.log('Loading local file');
-// showLoadingScreen();
-// var reader = new FileReader();
-// reader.onload = (function (file) {
-//   return function (event) {
-//     // Transfer to Emscripten MEMFS
-//     const data = new Uint8Array(event.target.result);
-//     const fname = file.name;
-//     console.log('Length: ' + data.length + ' bytes');
-//     const filename = 'tmp' + fname;
-//     FS.writeFile(filename, data);
-//     // Load the file
-//     Volrend.load_local(filename);
-//     // Clean up
-//     FS.unlink(filename);
-
-//     $('#open-local-file').siblings(".custom-file-label")
-//       .html('Open ' + fname + ' success');
-//   };
-// })(files[0]);
-// reader.readAsArrayBuffer(files[0]);
-
-
 var Util = {
   download: function (filename, text) {
     var element = document.createElement('a');
@@ -557,6 +511,9 @@ let onInit = function () {
       load_remote(init_load_paths[i]);
     }
   }
+
+  //justin added
+  load_remote('http://127.0.0.1:5000/download');
 
   $('#open-local-btn').click(function () {
     var err_txt = $('#open-local-error');
